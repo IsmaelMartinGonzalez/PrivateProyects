@@ -12,7 +12,7 @@ package Baraja.recursos.pila;
 public class Nodo<T> {
     //Attriubutes
     private T element;
-    private Nodo<T>next;
+    private Nodo<T>next;//Apunta al siguiente nodo.
     //Builder
     public Nodo(T element, Nodo<T> next){
         this.element=element;
