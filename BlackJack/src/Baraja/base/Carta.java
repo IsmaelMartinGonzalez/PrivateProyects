@@ -27,4 +27,8 @@ public class Carta<T> {
     public T getTipo() {
         return tipo;
     }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
 }

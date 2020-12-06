@@ -1,16 +1,16 @@
-package Recursos;
+package Mecanicas;
 
 /**
  * Project name: PrivateProyects/Recursos
  * Filename:
- * Created:  21/11/2020 / 9:06
+ * Created:  21/11/2020 / 9:07
  * Description:
  * Revision:
  *
  * @Author: Ismael - fmartin@nigul.cide.es
  * @Version:
  */
-public class Player {
+public class Reglas {
     //Attriubutes
     //Builder
     //Getters/Setters
