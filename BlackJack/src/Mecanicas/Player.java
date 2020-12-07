@@ -72,8 +72,7 @@ public class Player {
         for (CartaF c:mano) {
             if (c.getValor()>10){
                 c.setValor(10);
-            }
-            if (c.getValor()==1){
+            } else if (c.getValor()==1){
                 ace=true;
             }
             puntos+=c.getValor();
