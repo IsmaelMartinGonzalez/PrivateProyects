@@ -72,12 +72,13 @@ public class Player {
         for (CartaF c:mano) {
             if (c.getValor()>10){
                 c.setValor(10);
-            }else if (c.getValor()==1){
+            }
+            if (c.getValor()==1){
                 ace=true;
             }
             puntos+=c.getValor();
         }
-        if (ace&&puntos+10<=21){
+        if (ace&&puntos+10==21){
             puntos=puntos+10;
         }
         return puntos;
@@ -86,9 +87,10 @@ public class Player {
         this.apuesta+=apuesta;
         this.dinero-=apuesta;
     }
-    public void doblarApuesta(){}
-    public void plantarse(){}
-
+    public void doblarApuesta(){
+        this.apuesta*=2;
+        this.dinero-=apuesta;
+    }
     @Override
     public String toString() {
         return nombre + " tiene " + dinero + "€, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";

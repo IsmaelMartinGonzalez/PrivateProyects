@@ -23,6 +23,12 @@ public abstract class Baraja<T extends  Carta> {
         this.cartas = new PilaDinamica<>();
         this.cartasMonton = new PilaDinamica<>();
     }
+    //Getters/Setters
+
+    public PilaDinamica<T> getCartasMonton() {
+        return cartasMonton;
+    }
+
     //Other Methods
     public abstract void crearBaraja();
     public void barajar() {

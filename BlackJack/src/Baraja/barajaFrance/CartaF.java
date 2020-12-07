@@ -27,13 +27,13 @@ public class CartaF extends Carta<PalosF> {
                 nombreFigura="AS";
                 break;
             case 11:
-                nombreFigura="Jack";
+                nombreFigura="J";
                 break;
             case 12:
-                nombreFigura="Reina";
+                nombreFigura="Q";
                 break;
             case 13:
-                nombreFigura="Rey";
+                nombreFigura="K";
                 break;
             default:
                 nombreFigura=valor+"";
