@@ -1,9 +1,9 @@
-package Baraja.recursos.numeros;
+package Game.Baraja.recursos.numeros;
 
 import java.awt.Component;
 import javax.swing.JOptionPane;
 /**
- * Project name: PrivateProyects/Baraja.recursos.Numeros
+ * Project name: PrivateProyects/Game.Baraja.recursos.Numeros
  * Filename: Calculo
  * Created:  21/11/2020 / 9:24
  * Description: Este objeto sirve de apollo para el objeto aleatorias. Tambien nos permite hacer calculos matematicos.

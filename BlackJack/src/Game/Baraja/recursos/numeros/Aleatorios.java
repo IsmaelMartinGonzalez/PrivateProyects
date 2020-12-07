@@ -1,8 +1,8 @@
-package Baraja.recursos.numeros;
+package Game.Baraja.recursos.numeros;
 
 import java.util.Arrays;
 /**
- * Project name: PrivateProyects/Baraja.recursos.Numeros
+ * Project name: PrivateProyects/Game.Baraja.recursos.Numeros
  * Filename: Aleatorios
  * Created:  21/11/2020 / 9:24
  * Description: Este objeto nos permitira generar numero aleatorios.

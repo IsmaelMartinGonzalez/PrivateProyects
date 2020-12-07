@@ -1,4 +1,4 @@
-package Baraja.base;
+package Game.Baraja.base;
 
 /**
  * Project name: PrivateProyects/Recursos

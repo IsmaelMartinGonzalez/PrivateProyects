@@ -1,9 +1,9 @@
-package Baraja.barajaFrance;
+package Game.Baraja.barajaFrance;
 
-import Baraja.base.*;
+import Game.Baraja.base.*;
 /**
- * Project name: PrivateProyects/Baraja.barajaFrance
- * Filename: Baraja Francesa
+ * Project name: PrivateProyects/Game.Baraja.barajaFrance
+ * Filename: Game.Baraja Francesa
  * Created:  21/11/2020 / 9:22
  * Description: Creamos un objeto hijo de baraja para generar una baraja Francesa.
  * Revision:

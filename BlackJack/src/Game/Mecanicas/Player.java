@@ -1,7 +1,6 @@
-package Mecanicas;
+package Game.Mecanicas;
 
-import Baraja.barajaFrance.CartaF;
-import Baraja.base.Carta;
+import Game.Baraja.barajaFrance.CartaF;
 
 import java.util.ArrayList;
 
@@ -17,12 +16,12 @@ import java.util.ArrayList;
  */
 public class Player {
     //Attriubutes
-    private String nombre;
-    private ArrayList<CartaF> mano;
-    private int dinero;
-    private int puntos;
-    private int score;
-    private int apuesta;
+    protected String nombre;
+    protected ArrayList<CartaF> mano;
+    protected int dinero;
+    protected int puntos;
+    protected int score;
+    protected int apuesta;
 
     //Builder
 
@@ -50,6 +49,9 @@ public class Player {
     }
     public int getScore() {
         return score;
+    }
+    public int getApuesta() {
+        return apuesta;
     }
 
     //Other Methods

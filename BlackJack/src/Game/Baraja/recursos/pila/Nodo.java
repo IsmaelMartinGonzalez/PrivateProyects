@@ -1,7 +1,7 @@
-package Baraja.recursos.pila;
+package Game.Baraja.recursos.pila;
 
 /**
- * Project name: PrivateProyects/Baraja.recursos.pila
+ * Project name: PrivateProyects/Game.Baraja.recursos.pila
  * Filename: Nodo
  * Created:  21/11/2020 / 9:25
  * Description: Este es el elemnto auxiliar de nuestra pila dinamica

@@ -1,11 +1,11 @@
-package Baraja.base;
+package Game.Baraja.base;
 
-import Baraja.recursos.numeros.Aleatorios;
-import Baraja.recursos.pila.PilaDinamica;
+import Game.Baraja.recursos.numeros.Aleatorios;
+import Game.Baraja.recursos.pila.PilaDinamica;
 import java.util.ArrayList;
 /**
  * Project name: PrivateProyects/Recursos
- * Filename: Baraja
+ * Filename: Game.Baraja
  * Created:  21/11/2020 / 9:06
  * Description: Este objeto genera barajas de cartas que le pasemos como parametro
  * Revision:

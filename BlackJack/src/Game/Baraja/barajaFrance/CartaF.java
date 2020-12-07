@@ -1,9 +1,9 @@
-package Baraja.barajaFrance;
+package Game.Baraja.barajaFrance;
 
 
-import Baraja.base.Carta;
+import Game.Baraja.base.Carta;
 /**
- * Project name: PrivateProyects/Baraja.barajaFrance
+ * Project name: PrivateProyects/Game.Baraja.barajaFrance
  * Filename: Carta Francesa
  * Created:  21/11/2020 / 9:21
  * Description: Creamos un objeto hijo de carta que contendra los palos de la baraja Francesa.
