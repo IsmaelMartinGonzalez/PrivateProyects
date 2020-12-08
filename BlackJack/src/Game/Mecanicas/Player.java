@@ -54,6 +54,10 @@ public class Player {
         return apuesta;
     }
 
+    public void setDinero(int dinero) {
+        this.dinero += dinero;
+    }
+
     //Other Methods
     public int numCartas(){
         return this.mano.size();
