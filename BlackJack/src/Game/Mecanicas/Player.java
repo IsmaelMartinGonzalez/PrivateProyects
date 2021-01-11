@@ -3,6 +3,9 @@ package Game.Mecanicas;
 import Game.Baraja.barajaFrance.CartaF;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import static Game.Game2.baraja;
 
 /**
  * Project name: PrivateProyects/Recursos
@@ -22,6 +25,7 @@ public class Player {
     protected int puntos;
     protected int score;
     protected int apuesta;
+    protected boolean doblar = false;
 
     //Builder
 
@@ -52,6 +56,9 @@ public class Player {
     }
     public int getApuesta() {
         return apuesta;
+    }
+    public boolean isDoblar() {
+        return doblar;
     }
 
     public void setDinero(int dinero) {
@@ -104,4 +111,86 @@ public class Player {
 
 
     }
+    public void MenuPlayer(){
+        Scanner sc=new Scanner(System.in);
+        boolean salir = false;
+        int opcion;//Opcion elejida por el user
+        System.out.println("-------");
+        System.out.println("Turno del jugador");
+        while (!salir) {
+            if (doblar) {
+                System.out.println("-------");
+                System.out.println("¿Que deseas hacer?");
+                System.out.println("Opcion 1: Pedir Carta");
+                System.out.println("Opcion 2: Plantaser");
+                System.out.println("Opcion 3: Rendirse");
+                System.out.print("Porfavor elije una opcion: ");
+                opcion = sc.nextInt();
+                switch (opcion) {
+                    case 1 -> {
+                        pedirCarta((CartaF) baraja.siguienteCarta(true));
+                        calcualrPuntos();
+                        verMano();
+                        System.out.println("-------");
+                        System.out.println("Puntos actuales: " + getPuntos());
+                    }
+                    case 2 -> {
+                        calcualrPuntos();
+                        salir = true;
+                    }
+                    case 3 -> {
+                        calcualrPuntos();
+                        System.out.println("-------");
+                        System.out.println("Tus puntos actuales son: " + getPuntos());
+                        salir = true;
+                    }
+                    default -> System.out.println("La opcion elejida no es correcta. Por favor elije una opcion entre 1 y 3");
+                }
+            } else {
+                System.out.println("-------");
+                System.out.println("¿Que deseas hacer?");
+                System.out.println("Opcion 1: Pedir Carta");
+                System.out.println("Opcion 2: Doblar");
+                System.out.println("Opcion 3: Plantaser");
+                System.out.println("Opcion 4: Rendirse");
+                System.out.print("Porfavor elije una opcion: ");
+                opcion = sc.nextInt();
+                switch (opcion) {
+                    case 1 -> {
+                        pedirCarta((CartaF) baraja.siguienteCarta(true));
+                        calcualrPuntos();
+                        verMano();
+                        System.out.println("-------");
+                        System.out.println("Puntos actuales: " + getPuntos());
+                        doblar = true;
+
+                    }
+                    case 2 -> {
+                        System.out.println("-------");
+                        System.out.println("Doble o nada");
+                        pedirCarta((CartaF) baraja.siguienteCarta(true));
+                        doblarApuesta();
+                        calcualrPuntos();
+                        verMano();
+                        System.out.println(toString());
+                        doblar = true;
+                        salir = true;
+                    }
+                    case 3 -> {
+                        calcualrPuntos();
+                        salir = true;
+                    }
+                    case 4 -> {
+                        calcualrPuntos();
+                        System.out.println("-------");
+                        System.out.println("Tus puntos actuales son: " + getPuntos());
+                        salir = true;
+                    }
+                    default -> System.out.println("La opcion elejida no es correcta. Por favor elije una opcion entre 1 y 4");
+                }
+            }
+        }
+    }
+
+
 }

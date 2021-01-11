@@ -4,6 +4,8 @@ import Game.Baraja.barajaFrance.CartaF;
 
 import java.util.ArrayList;
 
+import static Game.Game2.baraja;
+
 /**
  * Project name: PrivateProyects/Game.Mecanicas
  * Filename:
@@ -35,5 +37,19 @@ public class IA extends Player {
     @Override
     public String toString() {
         return nombre +" su mano es " + puntos;
+    }
+    public void MenuIA(){
+        System.out.println("-------");
+        System.out.println("Turno del Croupier");
+        verMano();
+        calcualrPuntos();
+        System.out.println("Puntos del croupier " + getPuntos());
+        while (getPuntos() <= 17 && getPuntos() <= 21) {
+            System.out.println("-------");
+            pedirCarta((CartaF) baraja.siguienteCarta(true));
+            verMano();
+            calcualrPuntos();
+            System.out.println("Puntos del croupier " + getPuntos());
+        }
     }
 }

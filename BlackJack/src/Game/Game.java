@@ -16,24 +16,26 @@ import java.util.Scanner;
  * @Version: 0.1
  */
 public class Game {
+    public static Scanner sc = new Scanner(System.in);
+    public static String user;
+    public static BarajaF baraja = new BarajaF();
+    public static IA croupier = new IA();
+    public static Player jugador;
+
     public static void newGame() {
-        Scanner sc = new Scanner(System.in);
-        String user;
-        BarajaF baraja = new BarajaF();
-        IA croupier = new IA();
         System.out.println("Bienvenido al Blak Jack");
         System.out.print("Por favor introduce tu nombre: ");
         user = sc.next();
-        Player jugador = new Player(user);
+        jugador = new Player(user);
         System.out.println("-------");
         System.out.println("Tu dinero actual es " + jugador.getDinero());
         System.out.println("¿Cual es tu apuesta?");
         System.out.println("min 10 / max 1000");
         System.out.println("10, 50, 100, 500, 1000");
-        do{
+        do {
             System.out.print("Apuesta: ");
             user = sc.next();
-        } while (!(user.equals("10")||user.equals("50")||user.equals("100")||user.equals("500")||user.equals("1000")));
+        } while (!(user.equals("10") || user.equals("50") || user.equals("100") || user.equals("500") || user.equals("1000")));
         jugador.apostar(Integer.parseInt(user));
         System.out.println("Tu apuesta es " + jugador.getApuesta());
         System.out.println("Repartiendo...");
@@ -42,12 +44,11 @@ public class Game {
         }
         jugador.verMano();
         jugador.calcualrPuntos();
-        System.out.println("Puntos: "+jugador.getPuntos());
+        System.out.println("Puntos: " + jugador.getPuntos());
         System.out.println("-------");
         for (int i = 0; i < 2; i++) {
             croupier.pedirCarta((CartaF) baraja.siguienteCarta(true));
         }
-        croupier.verManoOculta();
         /**Menu del jugador*/
         System.out.println("-------");
         System.out.println("Turno del jugador");
@@ -99,7 +100,7 @@ public class Game {
                         jugador.verMano();
                         System.out.println("-------");
                         System.out.println("Puntos actuales: " + jugador.getPuntos());
-                        doblar=false;
+                        doblar = false;
 
                     }
                     case 2 -> {
@@ -110,7 +111,7 @@ public class Game {
                         jugador.calcualrPuntos();
                         jugador.verMano();
                         System.out.println(jugador.toString());
-                        doblar=true;
+                        doblar = true;
                         salir = true;
                     }
                     case 3 -> {
@@ -127,46 +128,47 @@ public class Game {
                 }
             }
         }
-            /**Menu Croupier*/
+        croupier.verManoOculta();
+        /**Menu Croupier*/
+        System.out.println("-------");
+        System.out.println("Turno del Croupier");
+        croupier.verMano();
+        croupier.calcualrPuntos();
+        System.out.println("Puntos del croupier " + croupier.getPuntos());
+        while (croupier.getPuntos() < 17 && croupier.getPuntos() < 21) {
             System.out.println("-------");
-            System.out.println("Turno del Croupier");
+            croupier.pedirCarta((CartaF) baraja.siguienteCarta(true));
             croupier.verMano();
             croupier.calcualrPuntos();
             System.out.println("Puntos del croupier " + croupier.getPuntos());
-            while (croupier.getPuntos() < 17 && croupier.getPuntos() < 21) {
-                System.out.println("-------");
-                croupier.pedirCarta((CartaF) baraja.siguienteCarta(true));
-                croupier.verMano();
-                croupier.calcualrPuntos();
-                System.out.println("Puntos del croupier " + croupier.getPuntos());
-            }
-            /**Comparación de los turnos y ganador*/
-            System.out.println("-------");
-            System.out.println(jugador.toString());
-            System.out.println(croupier.toString());
-            if (croupier.getPuntos()>21&&jugador.getPuntos()<=21){
-                System.out.println("Has ganado");
-                if (doblar){
-                    jugador.setDinero(jugador.getApuesta()*2);
+        }
+        /**Comparación de los turnos y ganador*/
+        System.out.println("-------");
+        System.out.println(jugador.toString());
+        System.out.println(croupier.toString());
+        if (croupier.getPuntos() > 21 && jugador.getPuntos() <= 21) {
+            System.out.println("Has ganado");
+            if (doblar) {
+                jugador.setDinero(jugador.getApuesta() * 2);
 
-                }else {
-                    jugador.setDinero(jugador.getApuesta()*2);
-                }
-            }else if (jugador.getPuntos() < croupier.getPuntos()||jugador.getPuntos()>21) {
-                System.out.println("Has perdido");
-            }else if (jugador.getPuntos()>croupier.getPuntos()){
-                System.out.println("Has ganado");
-                if (doblar){
-                    jugador.setDinero(jugador.getApuesta()*2);
-                    croupier.setDinero(-jugador.getDinero());
-
-                }else {
-                    jugador.setDinero(jugador.getApuesta()*2);
-                }
-            }else if(jugador.getPuntos()==croupier.getPuntos()){
-                System.out.println("Empate");
-                jugador.setDinero(jugador.getApuesta());
+            } else {
+                jugador.setDinero(jugador.getApuesta() * 2);
             }
+        } else if (jugador.getPuntos() < croupier.getPuntos() || jugador.getPuntos() > 21) {
+            System.out.println("Has perdido");
+        } else if (jugador.getPuntos() > croupier.getPuntos()) {
+            System.out.println("Has ganado");
+            if (doblar) {
+                jugador.setDinero(jugador.getApuesta() * 2);
+                croupier.setDinero(-jugador.getDinero());
+
+            } else {
+                jugador.setDinero(jugador.getApuesta() * 2);
+            }
+        } else if (jugador.getPuntos() == croupier.getPuntos()) {
+            System.out.println("Empate");
+            jugador.setDinero(jugador.getApuesta());
+        }
         System.out.println(jugador.toString());
     }
 }
