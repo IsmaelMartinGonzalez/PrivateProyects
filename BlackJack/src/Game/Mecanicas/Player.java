@@ -93,11 +93,18 @@ public class Player {
         this.dinero-=apuesta;
     }
     public void doblarApuesta(){
-        this.apuesta*=2;
         this.dinero-=apuesta;
+        this.apuesta*=2;
+
     }
     @Override
     public String toString() {
-        return nombre + " tiene " + dinero + "€, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";
+        /**if (dinero<0){
+            return nombre + " tiene 0 €, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";
+        }else{
+        }*/
+        return nombre + " tiene "+dinero+" €, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";
+
+
     }
 }

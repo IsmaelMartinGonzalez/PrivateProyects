@@ -30,8 +30,10 @@ public class Game {
         System.out.println("¿Cual es tu apuesta?");
         System.out.println("min 10 / max 1000");
         System.out.println("10, 50, 100, 500, 1000");
-        System.out.print("Apuesta: ");
-        user = sc.next();
+        do{
+            System.out.print("Apuesta: ");
+            user = sc.next();
+        } while (!(user.equals("10")||user.equals("50")||user.equals("100")||user.equals("500")||user.equals("1000")));
         jugador.apostar(Integer.parseInt(user));
         System.out.println("Tu apuesta es " + jugador.getApuesta());
         System.out.println("Repartiendo...");
@@ -51,9 +53,9 @@ public class Game {
         System.out.println("Turno del jugador");
         boolean salir = false;
         int opcion;//Opcion elejida por el user
-        boolean doblar = true;
+        boolean doblar = false;
         while (!salir) {
-            if (!doblar) {
+            if (doblar) {
                 System.out.println("-------");
                 System.out.println("¿Que deseas hacer?");
                 System.out.println("Opcion 1: Pedir Carta");
@@ -108,6 +110,7 @@ public class Game {
                         jugador.calcualrPuntos();
                         jugador.verMano();
                         System.out.println(jugador.toString());
+                        doblar=true;
                         salir = true;
                     }
                     case 3 -> {
@@ -141,19 +144,19 @@ public class Game {
             System.out.println("-------");
             System.out.println(jugador.toString());
             System.out.println(croupier.toString());
-            if (croupier.getPuntos()>21){
+            if (croupier.getPuntos()>21&&jugador.getPuntos()<=21){
                 System.out.println("Has ganado");
-                if (!doblar){
+                if (doblar){
                     jugador.setDinero(jugador.getApuesta()*2);
 
                 }else {
                     jugador.setDinero(jugador.getApuesta());
                 }
-            }else if (jugador.getPuntos() < croupier.getPuntos()) {
+            }else if (jugador.getPuntos() < croupier.getPuntos()||jugador.getPuntos()>21) {
                 System.out.println("Has perdido");
             }else if (jugador.getPuntos()>croupier.getPuntos()){
                 System.out.println("Has ganado");
-                if (!doblar){
+                if (doblar){
                     jugador.setDinero(jugador.getApuesta()*2);
 
                 }else {
