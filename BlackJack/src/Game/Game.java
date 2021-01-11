@@ -150,7 +150,7 @@ public class Game {
                     jugador.setDinero(jugador.getApuesta()*2);
 
                 }else {
-                    jugador.setDinero(jugador.getApuesta());
+                    jugador.setDinero(jugador.getApuesta()*2);
                 }
             }else if (jugador.getPuntos() < croupier.getPuntos()||jugador.getPuntos()>21) {
                 System.out.println("Has perdido");
@@ -158,9 +158,10 @@ public class Game {
                 System.out.println("Has ganado");
                 if (doblar){
                     jugador.setDinero(jugador.getApuesta()*2);
+                    croupier.setDinero(-jugador.getDinero());
 
                 }else {
-                    jugador.setDinero(jugador.getApuesta());
+                    jugador.setDinero(jugador.getApuesta()*2);
                 }
             }else if(jugador.getPuntos()==croupier.getPuntos()){
                 System.out.println("Empate");

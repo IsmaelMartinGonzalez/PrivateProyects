@@ -99,10 +99,7 @@ public class Player {
     }
     @Override
     public String toString() {
-        /**if (dinero<0){
-            return nombre + " tiene 0 €, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";
-        }else{
-        }*/
+
         return nombre + " tiene "+dinero+" €, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";
 
 
