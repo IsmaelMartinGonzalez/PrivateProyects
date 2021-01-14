@@ -12,7 +12,8 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+        boolean end=false;
         Game2 partida=new Game2();
-        partida.newGame();
+        partida.Play();
     }
 }

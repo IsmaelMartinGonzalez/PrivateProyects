@@ -1,6 +1,7 @@
 package Game.Mecanicas;
 
 import Game.Baraja.barajaFrance.CartaF;
+import Game.Game2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ public class Player {
     protected int score;
     protected int apuesta;
     protected boolean doblar = false;
-
+    protected int opcion;//Opcion elejida por el user
     //Builder
 
     public Player(String nombre) {
@@ -60,9 +61,18 @@ public class Player {
     public boolean isDoblar() {
         return doblar;
     }
+    public int getOpcion() {
+        return opcion;
+    }
 
     public void setDinero(int dinero) {
         this.dinero += dinero;
+    }
+    public void setApuesta(int apuesta) {
+        this.apuesta = apuesta;
+    }
+    public void setDoblar(boolean doblar) {
+        this.doblar = doblar;
     }
 
     //Other Methods
@@ -78,6 +88,9 @@ public class Player {
     }
     public void pedirCarta(CartaF carata){
         this.mano.add(carata);
+    }
+    public void limpiarMano(){
+        this.mano.clear();
     }
     public int calcualrPuntos(){
         this.puntos=0;
@@ -106,15 +119,11 @@ public class Player {
     }
     @Override
     public String toString() {
-
         return nombre + " tiene "+dinero+" €, tu mano es " + puntos + " y tu apuesta es de " + apuesta + "€";
-
-
     }
     public void MenuPlayer(){
         Scanner sc=new Scanner(System.in);
         boolean salir = false;
-        int opcion;//Opcion elejida por el user
         System.out.println("-------");
         System.out.println("Turno del jugador");
         while (!salir) {
@@ -124,7 +133,7 @@ public class Player {
                 System.out.println("Opcion 1: Pedir Carta");
                 System.out.println("Opcion 2: Plantaser");
                 System.out.println("Opcion 3: Rendirse");
-                System.out.print("Porfavor elije una opcion: ");
+                System.out.print("Por favor elije una opcion: ");
                 opcion = sc.nextInt();
                 switch (opcion) {
                     case 1 -> {
@@ -133,6 +142,9 @@ public class Player {
                         verMano();
                         System.out.println("-------");
                         System.out.println("Puntos actuales: " + getPuntos());
+                        if (getPuntos()>=21){
+                            salir=true;
+                        }
                     }
                     case 2 -> {
                         calcualrPuntos();
@@ -163,18 +175,25 @@ public class Player {
                         System.out.println("-------");
                         System.out.println("Puntos actuales: " + getPuntos());
                         doblar = true;
-
+                        if (getPuntos()>=21){
+                            salir=true;
+                        }
                     }
                     case 2 -> {
-                        System.out.println("-------");
-                        System.out.println("Doble o nada");
-                        pedirCarta((CartaF) baraja.siguienteCarta(true));
-                        doblarApuesta();
-                        calcualrPuntos();
-                        verMano();
-                        System.out.println(toString());
-                        doblar = true;
-                        salir = true;
+                        if (dinero>100){
+                            System.out.println("-------");
+                            System.out.println("Doble o nada!");
+                            pedirCarta((CartaF) baraja.siguienteCarta(true));
+                            doblarApuesta();
+                            calcualrPuntos();
+                            verMano();
+                            System.out.println("Tu mano es "+getPuntos()+" y tu apuesta es "+getApuesta());
+                            doblar = true;
+                            salir = true;
+                        }else {
+                            System.out.println("No puedes doblar, no tienes suficiente saldo");
+                        }
+
                     }
                     case 3 -> {
                         calcualrPuntos();
@@ -191,6 +210,4 @@ public class Player {
             }
         }
     }
-
-
 }

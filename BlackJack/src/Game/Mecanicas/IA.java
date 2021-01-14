@@ -26,6 +26,7 @@ public class IA extends Player {
     //Getters/Setters
     //Other Methods
     public void verManoOculta(){
+        calcualrPuntos();
         System.out.println("Mano del "+nombre);
         System.out.println("Carta oculta");
         for (int i = 1; i < numCartas(); i++) {
@@ -36,7 +37,7 @@ public class IA extends Player {
 
     @Override
     public String toString() {
-        return nombre +" su mano es " + puntos;
+        return "El "+ nombre +" tiene " + puntos;
     }
     public void MenuIA(){
         System.out.println("-------");
